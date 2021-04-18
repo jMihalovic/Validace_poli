@@ -21,23 +21,22 @@
             <RowDefinition/>
             <RowDefinition/>
         </Grid.RowDefinitions>
-        <Label Grid.Row="0" Grid.Column="0" Content="Jméno" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBox x:Name="JmenoBox" Grid.Row="1" Grid.Column="0" Margin="10"/>
-        <Label Grid.Row="0" Grid.Column="2" Content="Příjmení" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBox x:Name="PrijmeniBox" Grid.Row="1" Grid.Column="2" Margin="10"/>
-        <Label Grid.Row="0" Grid.Column="4" Content="Datum narození" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBox x:Name="DatumBox" Grid.Row="1" Grid.Column="4" Margin="10"/>
-        <Label Grid.Row="2" Grid.Column="0" Content="Vzdělání" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <ComboBox x:Name="VzdelaniBox" Grid.Row="3" Grid.Column="0" SelectedIndex="0" VerticalAlignment="Center" HorizontalAlignment="Center">
-            <ComboBoxItem Content="Žádné"/>
-            <ComboBoxItem Content="Základní"/>
-            <ComboBoxItem Content="Střední"/>
-            <ComboBoxItem Content="Vysoké"/>
+        <Label x:Name="ErrorLabelName" Grid.Row="0" Grid.Column="0" Content="{Binding NameError}" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding NameErrorVisible}"/>
+        <TextBox x:Name="Name" Grid.Row="1" Grid.Column="0" Margin="10" Text="{Binding Jmeno, UpdateSourceTrigger=PropertyChanged}" TextChanged="Name_TextChanged"/>
+        <Label x:Name="ErrorLabelSurname" Grid.Row="0" Grid.Column="2" Content="{Binding SurnameError}" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding SurnameErrorVisible}" Grid.ColumnSpan="2"/>
+        <TextBox x:Name="Surname" Grid.Row="1" Grid.Column="2" Margin="10" Text="{Binding Prijmeni, UpdateSourceTrigger=PropertyChanged}" TextChanged="Surname_TextChanged"/>
+        <Label x:Name="ErrorLabelDate" Grid.Row="0" Grid.Column="4" Content="Musí být datum" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding DateErrorVisible}"/>
+        <TextBox x:Name="Date" Grid.Row="1" Grid.Column="4" Margin="10" Text="{Binding DatumNarozeni, UpdateSourceTrigger=PropertyChanged}" TextChanged="Date_TextChanged"/>
+        <ComboBox x:Name="Education" Grid.Row="3" Grid.Column="0" SelectedIndex="0" VerticalAlignment="Center" HorizontalAlignment="Center">
+            <ComboBoxItem Content="Žádné vzdělání"/>
+            <ComboBoxItem Content="Základní vzdělání"/>
+            <ComboBoxItem Content="Střední vzdělání"/>
+            <ComboBoxItem Content="Vysoké vzdělání"/>
         </ComboBox>
-        <Label Grid.Row="2" Grid.Column="2" Content="Pracovní pozice" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBox x:Name="PoziceBox" Grid.Row="3" Grid.Column="2" Margin="10"/>
-        <Label Grid.Row="2" Grid.Column="4" Content="Plat" VerticalAlignment="Center" HorizontalAlignment="Center"/>
-        <TextBox x:Name="PlatBox" Grid.Row="3" Grid.Column="4" Margin="10"/>
+        <Label x:Name="ErrorLabelPosition" Grid.Row="2" Grid.Column="2" Content="Pole nesmí být prázdné" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding PositionErrorVisible}"/>
+        <TextBox x:Name="Position" Grid.Row="3" Grid.Column="2" Margin="10" Text="{Binding Pozice, UpdateSourceTrigger=PropertyChanged}" TextChanged="Position_TextChanged"/>
+        <Label x:Name="ErrorLabelPayment" Grid.Row="2" Grid.Column="4" Content="Plat musí být číslo" VerticalAlignment="Center" HorizontalAlignment="Center" Visibility="{Binding PaymentErrorVisible}"/>
+        <TextBox x:Name="Payment" Grid.Row="3" Grid.Column="4" Margin="10" Text="{Binding Plat, UpdateSourceTrigger=PropertyChanged}" TextChanged="Payment_TextChanged"/>
         <Button Grid.Column="2" Grid.Row="4" Content="Odeslat" Click="Button_Click" Margin="10"/>
         <TextBlock x:Name="Info" Grid.Row="4" Grid.Column="3" Margin="10,10,100,10" Grid.ColumnSpan="2"/>
     </Grid>
